@@ -1,5 +1,5 @@
 <div class="w-full max-w-md mx-auto my-6">
-    <div class="bg-white/95 backdrop-blur-xl p-8 sm:p-10 rounded-3xl shadow-card hover:shadow-card-hover border border-slate-200/80 transition-all duration-300">
+    <div class="bg-white p-8 sm:p-10 rounded-3xl shadow-card hover:shadow-card-hover border border-slate-200 transition-all duration-300">
         <!-- Header -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 text-white shadow-glow mb-4">
@@ -8,46 +8,46 @@
                 </svg>
             </div>
             <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Buat Akun Member</h1>
-            <p class="text-sm text-slate-600 mt-2">Daftar sekarang untuk mulai mengelola stok inventaris Anda</p>
+            <p class="text-sm text-slate-700 mt-2 font-medium">Daftar sekarang untuk mulai mengelola stok inventaris Anda</p>
         </div>
 
         <form wire:submit.prevent="register" class="space-y-4">
             <div>
                 <label for="name" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Nama Lengkap</label>
                 <input wire:model="name" type="text" id="name" 
-                    class="w-full px-4 py-3 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all" 
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all placeholder:text-slate-600" 
                     placeholder="Nama Anda" required>
-                @error('name') <span class="text-xs font-semibold text-rose-600 mt-1.5 block">{{ $message }}</span> @enderror
+                @error('name') <span class="text-xs font-semibold text-rose-800 mt-1.5 block">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="username" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Username</label>
                 <input wire:model="username" type="text" id="username" 
-                    class="w-full px-4 py-3 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all" 
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all placeholder:text-slate-600" 
                     placeholder="username_kamu" required>
-                @error('username') <span class="text-xs font-semibold text-rose-600 mt-1.5 block">{{ $message }}</span> @enderror
+                @error('username') <span class="text-xs font-semibold text-rose-800 mt-1.5 block">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="email" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Email</label>
                 <input wire:model="email" type="email" id="email" 
-                    class="w-full px-4 py-3 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all" 
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all placeholder:text-slate-600" 
                     placeholder="nama@email.com" required>
-                @error('email') <span class="text-xs font-semibold text-rose-600 mt-1.5 block">{{ $message }}</span> @enderror
+                @error('email') <span class="text-xs font-semibold text-rose-800 mt-1.5 block">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="password" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Password</label>
                 <input wire:model="password" type="password" id="password" 
-                    class="w-full px-4 py-3 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all" 
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all placeholder:text-slate-600" 
                     placeholder="Minimal 8 karakter" required>
-                @error('password') <span class="text-xs font-semibold text-rose-600 mt-1.5 block">{{ $message }}</span> @enderror
+                @error('password') <span class="text-xs font-semibold text-rose-800 mt-1.5 block">{{ $message }}</span> @enderror
             </div>
 
             <div>
                 <label for="password_confirmation" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Konfirmasi Password</label>
                 <input wire:model="password_confirmation" type="password" id="password_confirmation" 
-                    class="w-full px-4 py-3 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all" 
+                    class="w-full px-4 py-3 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all placeholder:text-slate-600" 
                     placeholder="Ulangi password" required>
             </div>
 
@@ -62,9 +62,9 @@
             </button>
         </form>
 
-        <div class="mt-8 pt-6 border-t border-slate-100 text-center text-xs text-slate-600">
+        <div class="mt-8 pt-6 border-t border-slate-100 text-center text-xs text-slate-700">
             Sudah memiliki akun?
-            <a href="{{ route('login') }}" class="font-bold text-blue-600 hover:text-blue-700 hover:underline transition">Masuk di sini</a>
+            <a href="{{ route('login') }}" class="font-bold text-blue-700 hover:text-blue-800 hover:underline transition">Masuk di sini</a>
         </div>
     </div>
 </div>

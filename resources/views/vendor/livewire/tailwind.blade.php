@@ -16,7 +16,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
             <div class="flex justify-between flex-1 sm:hidden">
                 <div>
                     @if ($paginator->onFirstPage())
-                        <button type="button" disabled class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-slate-400 bg-slate-100 border border-slate-200 cursor-not-allowed leading-5 rounded-xl">
+                        <button type="button" disabled class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-slate-600 bg-slate-100 border border-slate-200 cursor-not-allowed leading-5 rounded-xl">
                             {!! __('pagination.previous') !!}
                         </button>
                     @else
@@ -32,7 +32,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                             {!! __('pagination.next') !!}
                         </button>
                     @else
-                        <button type="button" disabled class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-semibold text-slate-400 bg-slate-100 border border-slate-200 cursor-not-allowed leading-5 rounded-xl">
+                        <button type="button" disabled class="relative inline-flex items-center px-4 py-2 ml-3 text-sm font-semibold text-slate-600 bg-slate-100 border border-slate-200 cursor-not-allowed leading-5 rounded-xl">
                             {!! __('pagination.next') !!}
                         </button>
                     @endif
@@ -57,7 +57,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                         <div>
                             {{-- Previous Page Link --}}
                             @if ($paginator->onFirstPage())
-                                <button type="button" disabled aria-label="{{ __('pagination.previous') }}" class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-slate-400 bg-slate-50 cursor-not-allowed leading-5">
+                                <button type="button" disabled aria-label="{{ __('pagination.previous') }}" class="relative inline-flex items-center px-3 py-2 text-sm font-medium text-slate-600 bg-slate-100 cursor-not-allowed leading-5">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
                                     </svg>
@@ -75,7 +75,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                         @foreach ($elements as $element)
                             {{-- "Three Dots" Separator --}}
                             @if (is_string($element))
-                                <span class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-semibold text-slate-500 bg-slate-50 leading-5">{{ $element }}</span>
+                                <span class="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-bold text-slate-700 bg-slate-100 leading-5">{{ $element }}</span>
                             @endif
 
                             {{-- Array Of Links --}}
@@ -103,7 +103,7 @@ $scrollIntoViewJsSnippet = ($scrollTo !== false)
                                     </svg>
                                 </button>
                             @else
-                                <button type="button" disabled aria-label="{{ __('pagination.next') }}" class="relative inline-flex items-center px-3 py-2 -ml-px text-sm font-medium text-slate-400 bg-slate-50 cursor-not-allowed leading-5">
+                                <button type="button" disabled aria-label="{{ __('pagination.next') }}" class="relative inline-flex items-center px-3 py-2 -ml-px text-sm font-medium text-slate-600 bg-slate-100 cursor-not-allowed leading-5">
                                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                                         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                                     </svg>

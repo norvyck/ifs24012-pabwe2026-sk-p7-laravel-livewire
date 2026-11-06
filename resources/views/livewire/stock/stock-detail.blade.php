@@ -7,7 +7,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 mb-8">
         <div class="flex items-center space-x-3.5">
             <a href="{{ route('stocks.index') }}" 
-               class="p-2.5 rounded-2xl bg-white/90 border border-slate-200/90 text-slate-600 hover:text-blue-600 hover:bg-blue-50 shadow-sm transition-all duration-200 active:scale-95" 
+               class="p-2.5 rounded-2xl bg-white border border-slate-200 text-slate-700 hover:text-blue-700 hover:bg-blue-50 shadow-sm transition-all duration-200 active:scale-95" 
                title="Kembali ke Daftar Stok"
                aria-label="Kembali ke Daftar Stok">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -33,7 +33,7 @@
                         {{ \App\Features\Stock\Enums\StockStatus::tryFrom($stock->status)?->label() ?? ucfirst($stock->status) }}
                     </span>
                 </div>
-                <p class="text-xs text-slate-500 mt-1 font-medium">Dibuat pada {{ $stock->created_at ? $stock->created_at->format('d M Y H:i') : '-' }}</p>
+                <p class="text-xs text-slate-700 mt-1 font-semibold">Dibuat pada {{ $stock->created_at ? $stock->created_at->format('d M Y H:i') : '-' }}</p>
             </div>
         </div>
 
@@ -52,7 +52,7 @@
             </button>
 
             <!-- Adjust Quantity Stepper Pill -->
-            <div class="inline-flex items-center rounded-xl border border-slate-200/90 bg-white/95 p-1 shadow-xs" x-data="{ busy: false }">
+            <div class="inline-flex items-center rounded-xl border border-slate-200 bg-white p-1 shadow-xs" x-data="{ busy: false }">
                 <button type="button"
                     x-bind:disabled="busy || {{ $stock->quantity <= 0 ? 'true' : 'false' }}"
                     x-on:click="
@@ -60,7 +60,7 @@
                         busy = true;
                         $wire.adjustQuantity(-1).finally(() => busy = false);
                     "
-                    class="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 hover:bg-rose-50 hover:text-rose-600 disabled:opacity-40 text-xs font-bold transition flex items-center justify-center active:scale-95"
+                    class="w-7 h-7 rounded-lg bg-slate-100 text-slate-800 hover:bg-rose-50 hover:text-rose-800 disabled:opacity-40 text-xs font-bold transition flex items-center justify-center active:scale-95"
                     title="Kurangi 1"
                     aria-label="Kurangi kuantitas stok">
                     &minus;
@@ -75,7 +75,7 @@
                         busy = true;
                         $wire.adjustQuantity(1).finally(() => busy = false);
                     "
-                    class="w-7 h-7 rounded-lg bg-slate-100 text-slate-700 hover:bg-emerald-50 hover:text-emerald-600 disabled:opacity-40 text-xs font-bold transition flex items-center justify-center active:scale-95"
+                    class="w-7 h-7 rounded-lg bg-slate-100 text-slate-800 hover:bg-emerald-50 hover:text-emerald-800 disabled:opacity-40 text-xs font-bold transition flex items-center justify-center active:scale-95"
                     title="Tambah 1"
                     aria-label="Tambah kuantitas stok">
                     &plus;
@@ -84,11 +84,11 @@
 
             <!-- Delete Button -->
             <button wire:click="confirmDeleteStock" wire:loading.attr="disabled" 
-                class="inline-flex items-center space-x-1.5 px-3.5 py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200/80 text-xs font-bold rounded-xl transition duration-200 active:scale-95 disabled:opacity-75">
-                <svg wire:loading.remove wire:target="confirmDeleteStock" class="w-4 h-4 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                class="inline-flex items-center space-x-1.5 px-3.5 py-2.5 bg-rose-50 hover:bg-rose-100 text-rose-800 border border-rose-300 text-xs font-bold rounded-xl transition duration-200 active:scale-95 disabled:opacity-75">
+                <svg wire:loading.remove wire:target="confirmDeleteStock" class="w-4 h-4 text-rose-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                 </svg>
-                <svg wire:loading wire:target="confirmDeleteStock" class="animate-spin w-4 h-4 text-rose-600" fill="none" viewBox="0 0 24 24">
+                <svg wire:loading wire:target="confirmDeleteStock" class="animate-spin w-4 h-4 text-rose-800" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
                 </svg>
@@ -98,7 +98,7 @@
     </div>
 
     <!-- Cover Stock Section -->
-    <div class="bg-white/95 backdrop-blur-md rounded-3xl shadow-card border border-slate-200/80 overflow-hidden mb-8">
+    <div class="bg-white rounded-3xl shadow-card border border-slate-200 overflow-hidden mb-8">
         <input type="file" wire:model="coverPhoto" id="coverPhotoInput" accept="image/*" class="hidden">
 
         @if ($stock->cover_image_path && \Illuminate\Support\Facades\Storage::disk('public')->exists($stock->cover_image_path))
@@ -130,7 +130,7 @@
                     </svg>
                 </div>
                 <h2 class="text-base font-bold text-slate-800">Tambahkan Cover Gambar untuk Stok Barang Ini</h2>
-                <p class="text-xs text-slate-600 mt-1 max-w-sm">Mendukung format gambar PNG, JPG, GIF hingga ukuran 5MB untuk katalog produk.</p>
+                <p class="text-xs text-slate-700 mt-1 max-w-sm">Mendukung format gambar PNG, JPG, GIF hingga ukuran 5MB untuk katalog produk.</p>
                 
                 <button type="button" onclick="document.getElementById('coverPhotoInput').click()" 
                     class="mt-5 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold rounded-xl shadow-md shadow-blue-500/20 transition flex items-center space-x-2 active:scale-95">
@@ -144,7 +144,7 @@
             Sedang mengunggah dan memproses gambar cover...
         </div>
         @error('coverPhoto')
-            <div class="p-3 bg-rose-50 border-t border-rose-100 text-center text-xs text-rose-600 font-semibold">
+            <div class="p-3 bg-rose-50 border-t border-rose-100 text-center text-xs text-rose-800 font-semibold">
                 {{ $message }}
             </div>
         @enderror
@@ -153,29 +153,29 @@
     <!-- Stock Details Overview Cards -->
     <div class="space-y-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <div class="bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-card border border-slate-200/80">
-                <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">Status Ketersediaan</span>
+            <div class="bg-white p-5 rounded-2xl shadow-card border border-slate-200">
+                <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider block mb-1.5">Status Ketersediaan</span>
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border {{ \App\Features\Stock\Enums\StockStatus::tryFrom($stock->status)?->badgeClass() ?? 'bg-slate-100 text-slate-700' }}">
                     {{ \App\Features\Stock\Enums\StockStatus::tryFrom($stock->status)?->label() ?? ucfirst($stock->status) }}
                 </span>
             </div>
 
-            <div class="bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-card border border-slate-200/80">
-                <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">Jumlah Stok Saat Ini</span>
+            <div class="bg-white p-5 rounded-2xl shadow-card border border-slate-200">
+                <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider block mb-1.5">Jumlah Stok Saat Ini</span>
                 <div class="text-xl font-black text-slate-900">
-                    {{ $stock->quantity }} <span class="text-sm font-semibold text-slate-600">{{ $stock->unit }}</span>
+                    {{ $stock->quantity }} <span class="text-sm font-semibold text-slate-700">{{ $stock->unit }}</span>
                 </div>
             </div>
 
-            <div class="bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-card border border-slate-200/80">
-                <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">Ambang Batas Minimum</span>
+            <div class="bg-white p-5 rounded-2xl shadow-card border border-slate-200">
+                <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider block mb-1.5">Ambang Batas Minimum</span>
                 <div class="text-xl font-bold text-slate-800">
-                    {{ $stock->min_stock }} <span class="text-sm font-semibold text-slate-600">{{ $stock->unit }}</span>
+                    {{ $stock->min_stock }} <span class="text-sm font-semibold text-slate-700">{{ $stock->unit }}</span>
                 </div>
             </div>
 
-            <div class="bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-card border border-slate-200/80">
-                <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">Harga Satuan</span>
+            <div class="bg-white p-5 rounded-2xl shadow-card border border-slate-200">
+                <span class="text-[11px] font-bold text-slate-700 uppercase tracking-wider block mb-1.5">Harga Satuan</span>
                 <div class="text-xl font-black text-slate-900">
                     {{ $stock->price !== null ? 'Rp ' . number_format($stock->price, 0, ',', '.') : '-' }}
                 </div>
@@ -183,11 +183,11 @@
         </div>
 
         <!-- Description Viewer Section with Toast UI -->
-        <div class="bg-white/95 backdrop-blur-md p-6 sm:p-8 rounded-3xl shadow-card border border-slate-200/80">
+        <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-card border border-slate-200">
             <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
                 <div>
                     <h2 class="text-lg font-bold text-slate-900">Deskripsi / Spesifikasi Produk</h2>
-                    <p class="text-xs text-slate-600 mt-0.5">Format Markdown & Rich Text</p>
+                    <p class="text-xs text-slate-700 mt-0.5 font-medium">Format Markdown & Rich Text</p>
                 </div>
             </div>
 
@@ -206,7 +206,7 @@
                     <div x-ref="viewerContainer"></div>
                 </div>
             @else
-                <div class="py-8 text-center text-slate-600 text-sm font-medium">
+                <div class="py-8 text-center text-slate-700 text-sm font-medium">
                     Belum ada deskripsi yang ditambahkan untuk stok barang ini.
                 </div>
             @endif
@@ -237,11 +237,11 @@
                         </div>
                         <div>
                             <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Edit Stok Barang</h2>
-                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Perbarui atribut dan data inventaris barang Anda</p>
+                            <p class="text-xs text-slate-700 mt-0.5 font-medium">Perbarui atribut dan data inventaris barang Anda</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.closeEditModal()" aria-label="Tutup form edit stok" 
-                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
+                        class="p-2 -mr-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -256,14 +256,14 @@
                                 <input id="stock-edit-name" wire:model="name" type="text"
                                     class="w-full px-4 py-2.5 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all"
                                     required>
-                                @error('name') <span class="text-xs font-semibold text-rose-600 mt-1 block">{{ $message }}</span> @enderror
+                                @error('name') <span class="text-xs font-semibold text-rose-800 mt-1 block">{{ $message }}</span> @enderror
                             </div>
 
                             <div>
                                 <label for="stock-edit-sku" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Kode SKU</label>
                                 <input id="stock-edit-sku" wire:model="sku" type="text"
                                     class="w-full px-4 py-2.5 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-mono transition-all">
-                                @error('sku') <span class="text-xs font-semibold text-rose-600 mt-1 block">{{ $message }}</span> @enderror
+                                @error('sku') <span class="text-xs font-semibold text-rose-800 mt-1 block">{{ $message }}</span> @enderror
                             </div>
 
                             <div>
@@ -271,7 +271,7 @@
                                 <input id="stock-edit-unit" wire:model="unit" type="text"
                                     class="w-full px-4 py-2.5 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all"
                                     required>
-                                @error('unit') <span class="text-xs font-semibold text-rose-600 mt-1 block">{{ $message }}</span> @enderror
+                                @error('unit') <span class="text-xs font-semibold text-rose-800 mt-1 block">{{ $message }}</span> @enderror
                             </div>
 
                             <div>
@@ -279,7 +279,7 @@
                                 <input id="stock-edit-quantity" wire:model.live="quantity" type="number" min="0"
                                     class="w-full px-4 py-2.5 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all"
                                     required>
-                                @error('quantity') <span class="text-xs font-semibold text-rose-600 mt-1 block">{{ $message }}</span> @enderror
+                                @error('quantity') <span class="text-xs font-semibold text-rose-800 mt-1 block">{{ $message }}</span> @enderror
                             </div>
 
                             <div>
@@ -287,20 +287,20 @@
                                 <input id="stock-edit-minStock" wire:model.live="minStock" type="number" min="0"
                                     class="w-full px-4 py-2.5 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all"
                                     required>
-                                @error('minStock') <span class="text-xs font-semibold text-rose-600 mt-1 block">{{ $message }}</span> @enderror
+                                @error('minStock') <span class="text-xs font-semibold text-rose-800 mt-1 block">{{ $message }}</span> @enderror
                             </div>
 
                             <div>
                                 <label for="stock-edit-price" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Harga Satuan (Rp, Opsional)</label>
                                 <input id="stock-edit-price" wire:model="price" type="number" min="0" step="0.01"
                                     class="w-full px-4 py-2.5 rounded-xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 text-sm font-medium transition-all">
-                                @error('price') <span class="text-xs font-semibold text-rose-600 mt-1 block">{{ $message }}</span> @enderror
+                                @error('price') <span class="text-xs font-semibold text-rose-800 mt-1 block">{{ $message }}</span> @enderror
                             </div>
 
                             <div>
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Status (Otomatis)</label>
                                 <div class="px-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 text-sm font-bold flex items-center">
-                                    <span class="{{ $status === 'available' ? 'text-emerald-700' : ($status === 'low_stock' ? 'text-amber-700' : 'text-rose-700') }}">
+                                    <span class="{{ $status === 'available' ? 'text-emerald-800' : ($status === 'low_stock' ? 'text-amber-800' : 'text-rose-800') }}">
                                         {{ ucfirst(str_replace('_', ' ', $status)) }}
                                     </span>
                                 </div>
@@ -310,7 +310,7 @@
                         <div>
                             <div class="flex items-center justify-between mb-1.5">
                                 <label class="block text-xs font-bold uppercase tracking-wider text-slate-700">Deskripsi / Spesifikasi Barang (Toast UI)</label>
-                                <span class="text-[11px] font-semibold text-slate-400">Markdown & WYSIWYG</span>
+                                <span class="text-[11px] font-semibold text-slate-600">Markdown & WYSIWYG</span>
                             </div>
 
                             <div wire:ignore
@@ -342,13 +342,13 @@
                                  class="rounded-2xl border border-slate-300 overflow-hidden bg-white shadow-xs">
                                 <div x-ref="editEditorContainer"></div>
                             </div>
-                            @error('description') <span class="text-xs font-semibold text-rose-600 mt-1 block">{{ $message }}</span> @enderror
+                            @error('description') <span class="text-xs font-semibold text-rose-800 mt-1 block">{{ $message }}</span> @enderror
                         </div>
                     </div>
 
                     <div class="flex items-center justify-end gap-3 px-6 sm:px-8 py-4 bg-slate-50/80 border-t border-slate-100">
                         <button type="button" @click="show = false; $wire.closeEditModal()"
-                            class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
+                            class="px-4 py-2.5 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                             Batal
                         </button>
                         <button type="submit" wire:loading.attr="disabled"
@@ -390,11 +390,11 @@
                         </div>
                         <div>
                             <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Hapus Cover</h2>
-                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Berkas gambar cover akan dihapus permanen</p>
+                            <p class="text-xs text-slate-700 mt-0.5 font-medium">Berkas gambar cover akan dihapus permanen</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.cancelDeleteCover()" aria-label="Tutup modal konfirmasi" 
-                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
+                        class="p-2 -mr-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -402,13 +402,13 @@
                 </div>
 
                 <div class="p-6 sm:p-7">
-                    <p class="text-sm font-medium text-slate-600 leading-relaxed">
+                    <p class="text-sm font-medium text-slate-700 leading-relaxed">
                         Apakah Anda yakin ingin menghapus gambar cover untuk stok barang ini?
                     </p>
                 </div>
 
                 <div class="flex items-center justify-end gap-3 px-6 sm:px-7 py-4 bg-slate-50/80 border-t border-slate-100">
-                    <button type="button" @click="show = false; $wire.cancelDeleteCover()" class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
+                    <button type="button" @click="show = false; $wire.cancelDeleteCover()" class="px-4 py-2.5 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                         Batal
                     </button>
                     <button type="button" wire:click="deleteCoverPhoto" wire:loading.attr="disabled" class="px-5 py-2.5 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 disabled:opacity-75 text-white text-xs font-bold rounded-xl shadow-md shadow-rose-500/20 transition flex items-center space-x-1.5 active:scale-95">
@@ -448,11 +448,11 @@
                         </div>
                         <div>
                             <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Konfirmasi Hapus</h2>
-                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Barang ini dan cover gambarnya akan dihapus</p>
+                            <p class="text-xs text-slate-700 mt-0.5 font-medium">Barang ini dan cover gambarnya akan dihapus</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.cancelDeleteStock()" aria-label="Tutup modal konfirmasi" 
-                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
+                        class="p-2 -mr-2 text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -460,13 +460,13 @@
                 </div>
 
                 <div class="p-6 sm:p-7">
-                    <p class="text-sm font-medium text-slate-600 leading-relaxed">
+                    <p class="text-sm font-medium text-slate-700 leading-relaxed">
                         Apakah Anda yakin ingin menghapus barang <strong>{{ $stock->name }}</strong> secara permanen?
                     </p>
                 </div>
 
                 <div class="flex items-center justify-end gap-3 px-6 sm:px-7 py-4 bg-slate-50/80 border-t border-slate-100">
-                    <button type="button" @click="show = false; $wire.cancelDeleteStock()" class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
+                    <button type="button" @click="show = false; $wire.cancelDeleteStock()" class="px-4 py-2.5 text-xs font-bold text-slate-700 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                         Batal
                     </button>
                     <button type="button" wire:click="deleteStock" wire:loading.attr="disabled" class="px-5 py-2.5 bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 disabled:opacity-75 text-white text-xs font-bold rounded-xl shadow-md shadow-rose-500/20 transition flex items-center space-x-1.5 active:scale-95">
@@ -476,8 +476,6 @@
                         </svg>
                         <span wire:loading.remove wire:target="deleteStock">Ya, Hapus Barang</span>
                         <span wire:loading wire:target="deleteStock">Menghapus...</span>
-                    </button>
-                </div>
                     </button>
                 </div>
             </div>
