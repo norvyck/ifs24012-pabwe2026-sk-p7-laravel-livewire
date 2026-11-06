@@ -8,7 +8,7 @@
         <div>
             <div class="flex items-center space-x-2.5 mb-1.5">
                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-700 border border-blue-200">
-                    Inventory 2026
+                    Inventory System
                 </span>
                 <span class="text-xs text-slate-400 font-medium">Real-time Stock Control</span>
             </div>
