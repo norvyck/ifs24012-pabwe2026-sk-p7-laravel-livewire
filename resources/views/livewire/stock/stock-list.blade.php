@@ -255,23 +255,31 @@
             x-data="{ show: true }"
             x-show="show"
             x-cloak
-            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 bg-slate-900/60 backdrop-blur-md">
-            <div class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-slate-200/80 max-h-[90vh] overflow-hidden flex flex-col">
-                <div class="flex items-center justify-between px-6 py-4.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white">
-                    <div class="flex items-center space-x-3">
-                        <span class="p-2 bg-white/20 rounded-xl backdrop-blur-sm">
+            @keydown.escape.window="show = false; $wire.closeFormModal()"
+            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 sm:p-6 bg-slate-950/70 backdrop-blur-sm">
+            <div @click.outside="show = false; $wire.closeFormModal()"
+                class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl shadow-slate-950/20 ring-1 ring-slate-900/10 max-h-[92vh] overflow-hidden flex flex-col my-auto transition-all">
+                
+                <!-- Sleek Top Gradient Accent -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600"></div>
+
+                <!-- Unified Header -->
+                <div class="px-6 sm:px-8 pt-6 pb-2 flex items-start justify-between gap-4">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/25 flex-shrink-0">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                             </svg>
-                        </span>
+                        </div>
                         <div>
-                            <h3 class="text-lg font-bold">
+                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">
                                 {{ $editingStockId ? 'Edit Stok Barang' : 'Tambah Stok Barang Baru' }}
                             </h3>
-                            <p class="text-xs text-blue-100">Lengkapi data atribut inventaris di bawah ini</p>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Lengkapi rincian data inventaris barang Anda</p>
                         </div>
                     </div>
-                    <button type="button" @click="show = false; $wire.closeFormModal()" aria-label="Tutup form stok barang" class="p-1.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition">
+                    <button type="button" @click="show = false; $wire.closeFormModal()" aria-label="Tutup form stok barang" 
+                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -392,7 +400,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 border-t border-slate-200/80">
+                    <div class="flex items-center justify-end gap-3 px-6 sm:px-8 py-4 bg-slate-50/80 border-t border-slate-100">
                         <button type="button" @click="show = false; $wire.closeFormModal()"
                             class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                             Batal
@@ -418,11 +426,29 @@
             x-data="{ show: true }"
             x-show="show"
             x-cloak
-            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 bg-slate-900/60 backdrop-blur-md">
-            <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200/80 overflow-hidden flex flex-col">
-                <div class="flex items-center justify-between px-6 py-4.5 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
-                    <h3 class="text-base font-bold">Import Stok dari File Excel</h3>
-                    <button type="button" @click="show = false; $wire.closeImportModal()" aria-label="Tutup modal import excel" class="p-1.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition">
+            @keydown.escape.window="show = false; $wire.closeImportModal()"
+            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 sm:p-6 bg-slate-950/70 backdrop-blur-sm">
+            <div @click.outside="show = false; $wire.closeImportModal()"
+                class="bg-white rounded-3xl max-w-md w-full shadow-2xl shadow-slate-950/20 ring-1 ring-slate-900/10 overflow-hidden flex flex-col my-auto transition-all">
+                
+                <!-- Sleek Top Gradient Accent -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-emerald-600 to-teal-600"></div>
+
+                <!-- Unified Header -->
+                <div class="px-6 sm:px-7 pt-6 pb-2 flex items-start justify-between gap-4">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-emerald-600 to-teal-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/25 flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Import Spreadsheet</h3>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Unggah berkas Excel/CSV untuk tambah stok</p>
+                        </div>
+                    </div>
+                    <button type="button" @click="show = false; $wire.closeImportModal()" aria-label="Tutup modal import excel" 
+                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -430,7 +456,7 @@
                 </div>
 
                 <form wire:submit.prevent="importExcel" class="flex flex-col">
-                    <div class="space-y-4 px-6 py-5">
+                    <div class="space-y-5 p-6 sm:p-7">
                         <div>
                             <label for="importFile" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Pilih File (.xlsx, .xls, .csv)</label>
                             <input id="importFile" wire:model="importFile" type="file" accept=".xlsx,.xls,.csv"
@@ -447,7 +473,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 border-t border-slate-200/80">
+                    <div class="flex items-center justify-end gap-3 px-6 sm:px-7 py-4 bg-slate-50/80 border-t border-slate-100">
                         <button type="button" @click="show = false; $wire.closeImportModal()"
                             class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                             Batal
@@ -473,73 +499,106 @@
             x-data="{ show: true }"
             x-show="show"
             x-cloak
-            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 bg-slate-900/60 backdrop-blur-md">
-            <div class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-slate-200/80 max-h-[90vh] overflow-hidden flex flex-col">
-                <div class="flex items-center justify-between px-6 py-4.5 bg-gradient-to-r from-purple-600 via-fuchsia-600 to-indigo-600 text-white">
-                    <div class="flex items-center space-x-3">
-                        <span class="p-2 bg-white/20 rounded-xl backdrop-blur-sm">
+            @keydown.escape.window="show = false; $wire.closeAiModal()"
+            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 sm:p-6 bg-slate-950/70 backdrop-blur-sm">
+            <div @click.outside="show = false; $wire.closeAiModal()"
+                class="bg-white rounded-3xl max-w-xl w-full shadow-2xl shadow-slate-950/20 ring-1 ring-slate-900/10 overflow-hidden flex flex-col my-auto transition-all">
+                
+                <!-- Sleek Top Gradient Accent -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-purple-600 via-fuchsia-600 to-indigo-600"></div>
+
+                <!-- Unified Header -->
+                <div class="px-6 sm:px-8 pt-6 pb-2 flex items-start justify-between gap-4">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-purple-600 via-fuchsia-600 to-indigo-600 text-white flex items-center justify-center shadow-lg shadow-purple-500/25 flex-shrink-0">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                             </svg>
-                        </span>
+                        </div>
                         <div>
-                            <h3 class="text-base sm:text-lg font-bold">Generate Stok Barang dengan AI</h3>
-                            <p class="text-xs text-purple-100">Buat item inventaris barang secara terstruktur otomatis</p>
+                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Generate Stok Barang AI</h3>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Buat item inventaris terstruktur otomatis berbasis AI</p>
                         </div>
                     </div>
-                    <button type="button" @click="show = false; $wire.closeAiModal()" aria-label="Tutup modal generate AI" class="p-1.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition">
+                    <button type="button" @click="show = false; $wire.closeAiModal()" aria-label="Tutup modal generate AI" 
+                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
 
-                <div class="space-y-4 overflow-y-auto flex-1 px-6 py-5">
+                <!-- Modal Body -->
+                <div class="p-6 sm:p-8 space-y-6">
                     @if ($aiErrorMessage)
-                        <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs font-semibold flex items-start space-x-2">
+                        <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200/80 text-rose-700 text-xs font-semibold flex items-start space-x-2.5">
                             <svg class="w-4 h-4 text-rose-500 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
                             </svg>
-                            <span>{{ $aiErrorMessage }}</span>
+                            <span class="leading-relaxed">{{ $aiErrorMessage }}</span>
                         </div>
                     @endif
 
-                    <div class="space-y-3">
-                        <div>
-                            <label for="aiPrompt" class="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5">Permintaan Anda / Prompt</label>
-                            <textarea id="aiPrompt" wire:model="aiPrompt" rows="3"
-                                class="w-full px-4 py-3 text-sm rounded-2xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-600 transition-all font-medium"
-                                placeholder="Contoh: Buatkan 3 stok aksesoris komputer (mouse, keyboard, headset) lengkap dengan SKU dan harga"></textarea>
-                            @error('aiPrompt')
-                                <span class="text-xs font-semibold text-rose-600 mt-1 block">{{ $message }}</span>
-                            @enderror
+                    <!-- Prompt Field -->
+                    <div class="space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label for="aiPrompt" class="text-xs font-bold uppercase tracking-wider text-slate-700">Permintaan / Prompt Anda</label>
+                            <span class="text-[11px] font-medium text-slate-400">Deskripsikan barang inventaris</span>
                         </div>
-
-                        <div class="flex items-center justify-between pt-1">
-                            <div class="flex items-center space-x-2">
-                                <label for="aiCount" class="text-xs font-bold text-slate-600">Jumlah Item:</label>
-                                <input id="aiCount" wire:model="aiCount" type="number" min="1" max="10"
-                                    class="w-20 px-3 py-1.5 text-xs font-bold rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-center">
-                            </div>
-
-                            <button type="button" wire:click="generateWithAi" wire:loading.attr="disabled"
-                                class="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 disabled:opacity-75 text-white text-xs font-bold rounded-xl shadow-md shadow-purple-500/20 transition flex items-center space-x-2 active:scale-95">
-                                <svg wire:loading wire:target="generateWithAi" class="animate-spin -ml-0.5 mr-1 h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24">
-                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-                                </svg>
-                                <span wire:loading.remove wire:target="generateWithAi">Mulai Generate</span>
-                                <span wire:loading wire:target="generateWithAi">Sedang Berpikir...</span>
-                            </button>
-                        </div>
+                        <textarea id="aiPrompt" wire:model="aiPrompt" rows="3"
+                            class="w-full px-4 py-3.5 text-sm rounded-2xl border border-slate-200/90 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-purple-500/20 focus:border-purple-600 transition-all font-medium placeholder-slate-400 resize-none shadow-xs"
+                            placeholder="Contoh: Buatkan 3 stok aksesoris komputer (mouse, keyboard, headset) lengkap dengan SKU dan harga"></textarea>
+                        @error('aiPrompt')
+                            <span class="text-xs font-semibold text-rose-600 mt-1 block">{{ $message }}</span>
+                        @enderror
                     </div>
 
+                    <!-- Clean Control Bar -->
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 p-4 rounded-2xl bg-slate-50/80 border border-slate-200/70">
+                        <div class="flex items-center space-x-3">
+                            <label for="aiCount" class="text-xs font-bold uppercase tracking-wider text-slate-700">Jumlah Item:</label>
+                            <div class="inline-flex items-center rounded-xl bg-white border border-slate-200/90 p-1 shadow-xs">
+                                <button type="button" 
+                                    wire:click="$set('aiCount', {{ max(1, $aiCount - 1) }})" 
+                                    class="w-7 h-7 rounded-lg text-slate-600 hover:bg-slate-100 font-bold flex items-center justify-center transition active:scale-95"
+                                    aria-label="Kurangi jumlah item">&minus;</button>
+                                <input id="aiCount" wire:model.live="aiCount" type="number" min="1" max="10" 
+                                    class="w-10 text-center text-xs font-black text-slate-900 border-0 focus:ring-0 p-0" readonly>
+                                <button type="button" 
+                                    wire:click="$set('aiCount', {{ min(10, $aiCount + 1) }})" 
+                                    class="w-7 h-7 rounded-lg text-slate-600 hover:bg-slate-100 font-bold flex items-center justify-center transition active:scale-95"
+                                    aria-label="Tambah jumlah item">&plus;</button>
+                            </div>
+                            <span class="text-[11px] text-slate-400 font-medium">(1-10 item)</span>
+                        </div>
+
+                        <button type="button" wire:click="generateWithAi" wire:loading.attr="disabled"
+                            class="px-5 py-2.5 bg-gradient-to-r from-purple-600 via-fuchsia-600 to-indigo-600 hover:from-purple-700 hover:via-fuchsia-700 hover:to-indigo-700 disabled:opacity-75 text-white text-xs font-bold rounded-xl shadow-md shadow-purple-500/25 hover:shadow-glow-purple transition-all duration-200 flex items-center justify-center space-x-2 active:scale-95">
+                            <svg wire:loading wire:target="generateWithAi" class="animate-spin -ml-0.5 mr-1 h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                            </svg>
+                            <svg wire:loading.remove wire:target="generateWithAi" class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            </svg>
+                            <span wire:loading.remove wire:target="generateWithAi">Mulai Generate</span>
+                            <span wire:loading wire:target="generateWithAi">Sedang Berpikir...</span>
+                        </button>
+                    </div>
+
+                    <!-- AI Generated Items Result -->
                     @if (!empty($aiGeneratedItems))
-                        <div class="border-t border-slate-100 pt-4">
-                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Hasil Rekomendasi AI (Pilih yang Ingin Disimpan):</h4>
-                            <div class="space-y-2.5">
+                        <div class="border-t border-slate-100 pt-5 space-y-4">
+                            <div class="flex items-center justify-between">
+                                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Hasil Rekomendasi AI:</h4>
+                                <span class="text-xs text-purple-700 font-bold bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200/80">
+                                    {{ count($aiSelectedIndices) }} dari {{ count($aiGeneratedItems) }} dipilih
+                                </span>
+                            </div>
+                            
+                            <div class="space-y-2.5 max-h-64 overflow-y-auto pr-1">
                                 @foreach ($aiGeneratedItems as $idx => $item)
-                                    <label class="flex items-start space-x-3 p-3.5 rounded-2xl border border-slate-200/90 hover:bg-purple-50/40 cursor-pointer transition">
+                                    <label class="flex items-start space-x-3.5 p-3.5 rounded-2xl border transition-all cursor-pointer {{ in_array($idx, $aiSelectedIndices) ? 'border-purple-300 bg-purple-50/30 shadow-xs' : 'border-slate-200/80 bg-white hover:bg-slate-50' }}">
                                         <input type="checkbox" wire:model="aiSelectedIndices" value="{{ $idx }}"
                                             class="mt-1 w-4 h-4 rounded-md border-slate-300 text-purple-600 focus:ring-purple-500">
                                         <div class="flex-1 min-w-0">
@@ -555,38 +614,35 @@
                                                 </span>
                                             </div>
                                             @if(!empty($item['description']))
-                                                <p class="text-xs text-slate-500 mt-1 line-clamp-2">{{ $item['description'] }}</p>
+                                                <p class="text-xs text-slate-500 mt-1 line-clamp-2 leading-relaxed">{{ $item['description'] }}</p>
                                             @endif
-                                            <div class="flex items-center gap-3 mt-1.5 text-xs text-slate-600">
-                                                <span>Qty: <strong>{{ $item['quantity'] }} {{ $item['unit'] }}</strong></span>
+                                            <div class="flex items-center gap-4 mt-2 text-xs text-slate-600">
+                                                <span>Qty: <strong class="text-slate-800">{{ $item['quantity'] }} {{ $item['unit'] }}</strong></span>
                                                 @if(!empty($item['price']))
                                                     <span>Harga: <strong class="text-slate-800">Rp {{ number_format($item['price'], 0, ',', '.') }}</strong></span>
                                                 @endif
-                                                <span>Min: <strong>{{ $item['min_stock'] }}</strong></span>
+                                                <span>Min: <strong class="text-slate-800">{{ $item['min_stock'] }}</strong></span>
                                             </div>
                                         </div>
                                     </label>
                                 @endforeach
                             </div>
-                        </div>
-                    @endif
-                </div>
 
-                <div class="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 border-t border-slate-200/80">
-                    <button type="button" @click="show = false; $wire.closeAiModal()"
-                        class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
-                        Tutup
-                    </button>
-                    @if (!empty($aiGeneratedItems))
-                        <button type="button" wire:click="saveAiGenerated" wire:loading.attr="disabled"
-                            class="px-5 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 disabled:opacity-75 disabled:cursor-not-allowed rounded-xl shadow-md shadow-purple-500/20 transition flex items-center space-x-2">
-                            <svg wire:loading wire:target="saveAiGenerated" class="animate-spin -ml-1 mr-1.5 h-4 w-4 text-white" fill="none" viewBox="0 0 24 24">
-                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-                            </svg>
-                            <span wire:loading.remove wire:target="saveAiGenerated">Simpan Item Terpilih</span>
-                            <span wire:loading wire:target="saveAiGenerated">Menyimpan...</span>
-                        </button>
+                            <div class="pt-2 flex items-center justify-end gap-3">
+                                <button type="button" @click="show = false; $wire.closeAiModal()"
+                                    class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
+                                    Batal
+                                </button>
+                                <button type="button" wire:click="saveAiGenerated" wire:loading.attr="disabled"
+                                    class="px-5 py-2.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 disabled:opacity-75 text-white text-xs font-bold rounded-xl shadow-md shadow-purple-500/20 transition flex items-center space-x-2 active:scale-95">
+                                    <svg wire:loading wire:target="saveAiGenerated" class="animate-spin -ml-0.5 mr-1 h-3.5 w-3.5 text-white" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                                    </svg>
+                                    <span>Simpan Item Terpilih ({{ count($aiSelectedIndices) }})</span>
+                                </button>
+                            </div>
+                        </div>
                     @endif
                 </div>
             </div>
@@ -599,27 +655,42 @@
             x-data="{ show: true }"
             x-show="show"
             x-cloak
-            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 bg-slate-900/60 backdrop-blur-md">
-            <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200/80 overflow-hidden">
-                <div class="flex items-center space-x-3.5 px-6 py-4.5 bg-gradient-to-r from-rose-600 to-red-600 text-white">
-                    <div class="w-10 h-10 rounded-2xl bg-white/20 text-white flex items-center justify-center flex-shrink-0 backdrop-blur-sm">
+            @keydown.escape.window="show = false; $wire.cancelDelete()"
+            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 sm:p-6 bg-slate-950/70 backdrop-blur-sm">
+            <div @click.outside="show = false; $wire.cancelDelete()"
+                class="bg-white rounded-3xl max-w-md w-full shadow-2xl shadow-slate-950/20 ring-1 ring-slate-900/10 overflow-hidden my-auto transition-all">
+                
+                <!-- Sleek Top Gradient Accent -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-rose-600 to-red-600"></div>
+
+                <!-- Unified Header -->
+                <div class="px-6 sm:px-7 pt-6 pb-2 flex items-start justify-between gap-4">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-600 to-red-600 text-white flex items-center justify-center shadow-lg shadow-rose-500/25 flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Konfirmasi Hapus</h3>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Tindakan ini permanen dan tidak dapat dibatalkan</p>
+                        </div>
+                    </div>
+                    <button type="button" @click="show = false; $wire.cancelDelete()" aria-label="Tutup modal konfirmasi" 
+                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-base font-bold text-white">Konfirmasi Hapus Stok</h3>
-                        <p class="text-xs text-rose-100">Tindakan ini permanen dan tidak dapat dibatalkan</p>
-                    </div>
+                    </button>
                 </div>
 
-                <div class="px-6 py-5">
-                    <p class="text-sm font-medium text-slate-600">
-                        Apakah Anda yakin ingin menghapus data stok barang ini dari database?
+                <div class="p-6 sm:p-7">
+                    <p class="text-sm font-medium text-slate-600 leading-relaxed">
+                        Apakah Anda yakin ingin menghapus data stok barang ini dari database secara permanen?
                     </p>
                 </div>
 
-                <div class="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 border-t border-slate-200/80">
+                <div class="flex items-center justify-end gap-3 px-6 sm:px-7 py-4 bg-slate-50/80 border-t border-slate-100">
                     <button type="button" @click="show = false; $wire.cancelDelete()" class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                         Batal
                     </button>

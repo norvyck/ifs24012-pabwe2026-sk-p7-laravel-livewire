@@ -219,21 +219,29 @@
             x-data="{ show: true }"
             x-show="show"
             x-cloak
-            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 bg-slate-900/60 backdrop-blur-md">
-            <div class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl border border-slate-200/80 max-h-[90vh] overflow-hidden flex flex-col">
-                <div class="flex items-center justify-between px-6 py-4.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white">
-                    <div class="flex items-center space-x-3">
-                        <span class="p-2 bg-white/20 rounded-xl backdrop-blur-sm">
+            @keydown.escape.window="show = false; $wire.closeEditModal()"
+            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 sm:p-6 bg-slate-950/70 backdrop-blur-sm">
+            <div @click.outside="show = false; $wire.closeEditModal()"
+                class="bg-white rounded-3xl max-w-2xl w-full shadow-2xl shadow-slate-950/20 ring-1 ring-slate-900/10 max-h-[92vh] overflow-hidden flex flex-col my-auto transition-all">
+                
+                <!-- Sleek Top Gradient Accent -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600"></div>
+
+                <!-- Unified Header -->
+                <div class="px-6 sm:px-8 pt-6 pb-2 flex items-start justify-between gap-4">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/25 flex-shrink-0">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                             </svg>
-                        </span>
+                        </div>
                         <div>
-                            <h3 class="text-base sm:text-lg font-bold">Edit Stok Barang</h3>
-                            <p class="text-xs text-blue-100">Perbarui informasi barang inventaris Anda</p>
+                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Edit Stok Barang</h3>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Perbarui atribut dan data inventaris barang Anda</p>
                         </div>
                     </div>
-                    <button type="button" @click="show = false; $wire.closeEditModal()" aria-label="Tutup form edit stok" class="p-1.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition">
+                    <button type="button" @click="show = false; $wire.closeEditModal()" aria-label="Tutup form edit stok" 
+                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -338,7 +346,7 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 border-t border-slate-200/80">
+                    <div class="flex items-center justify-end gap-3 px-6 sm:px-8 py-4 bg-slate-50/80 border-t border-slate-100">
                         <button type="button" @click="show = false; $wire.closeEditModal()"
                             class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                             Batal
@@ -364,27 +372,42 @@
             x-data="{ show: true }"
             x-show="show"
             x-cloak
-            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 bg-slate-900/60 backdrop-blur-md">
-            <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200/80 overflow-hidden">
-                <div class="flex items-center space-x-3.5 px-6 py-4.5 bg-gradient-to-r from-rose-600 to-red-600 text-white">
-                    <div class="w-10 h-10 rounded-2xl bg-white/20 text-white flex items-center justify-center flex-shrink-0 backdrop-blur-sm">
+            @keydown.escape.window="show = false; $wire.cancelDeleteCover()"
+            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 sm:p-6 bg-slate-950/70 backdrop-blur-sm">
+            <div @click.outside="show = false; $wire.cancelDeleteCover()"
+                class="bg-white rounded-3xl max-w-md w-full shadow-2xl shadow-slate-950/20 ring-1 ring-slate-900/10 overflow-hidden my-auto transition-all">
+                
+                <!-- Sleek Top Gradient Accent -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-rose-600 to-red-600"></div>
+
+                <!-- Unified Header -->
+                <div class="px-6 sm:px-7 pt-6 pb-2 flex items-start justify-between gap-4">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-600 to-red-600 text-white flex items-center justify-center shadow-lg shadow-rose-500/25 flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Hapus Cover</h3>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Berkas gambar cover akan dihapus permanen</p>
+                        </div>
+                    </div>
+                    <button type="button" @click="show = false; $wire.cancelDeleteCover()" aria-label="Tutup modal konfirmasi" 
+                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-base font-bold text-white">Hapus Cover Gambar</h3>
-                        <p class="text-xs text-rose-100">Cover gambar akan dihapus dari penyimpanan</p>
-                    </div>
+                    </button>
                 </div>
 
-                <div class="px-6 py-5">
-                    <p class="text-sm font-medium text-slate-600">
-                        Apakah Anda yakin ingin menghapus cover gambar stok barang ini?
+                <div class="p-6 sm:p-7">
+                    <p class="text-sm font-medium text-slate-600 leading-relaxed">
+                        Apakah Anda yakin ingin menghapus gambar cover untuk stok barang ini?
                     </p>
                 </div>
 
-                <div class="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 border-t border-slate-200/80">
+                <div class="flex items-center justify-end gap-3 px-6 sm:px-7 py-4 bg-slate-50/80 border-t border-slate-100">
                     <button type="button" @click="show = false; $wire.cancelDeleteCover()" class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                         Batal
                     </button>
@@ -407,27 +430,42 @@
             x-data="{ show: true }"
             x-show="show"
             x-cloak
-            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 bg-slate-900/60 backdrop-blur-md">
-            <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200/80 overflow-hidden">
-                <div class="flex items-center space-x-3.5 px-6 py-4.5 bg-gradient-to-r from-rose-600 to-red-600 text-white">
-                    <div class="w-10 h-10 rounded-2xl bg-white/20 text-white flex items-center justify-center flex-shrink-0 backdrop-blur-sm">
+            @keydown.escape.window="show = false; $wire.cancelDeleteStock()"
+            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 sm:p-6 bg-slate-950/70 backdrop-blur-sm">
+            <div @click.outside="show = false; $wire.cancelDeleteStock()"
+                class="bg-white rounded-3xl max-w-md w-full shadow-2xl shadow-slate-950/20 ring-1 ring-slate-900/10 overflow-hidden my-auto transition-all">
+                
+                <!-- Sleek Top Gradient Accent -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-rose-600 to-red-600"></div>
+
+                <!-- Unified Header -->
+                <div class="px-6 sm:px-7 pt-6 pb-2 flex items-start justify-between gap-4">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-600 to-red-600 text-white flex items-center justify-center shadow-lg shadow-rose-500/25 flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Konfirmasi Hapus</h3>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Barang ini dan cover gambarnya akan dihapus</p>
+                        </div>
+                    </div>
+                    <button type="button" @click="show = false; $wire.cancelDeleteStock()" aria-label="Tutup modal konfirmasi" 
+                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-base font-bold text-white">Konfirmasi Hapus Stok Barang</h3>
-                        <p class="text-xs text-rose-100">Barang ini dan cover gambarnya akan dihapus permanen</p>
-                    </div>
+                    </button>
                 </div>
 
-                <div class="px-6 py-5">
-                    <p class="text-sm font-medium text-slate-600">
-                        Apakah Anda yakin ingin menghapus barang <strong>{{ $stock->name }}</strong>?
+                <div class="p-6 sm:p-7">
+                    <p class="text-sm font-medium text-slate-600 leading-relaxed">
+                        Apakah Anda yakin ingin menghapus barang <strong>{{ $stock->name }}</strong> secara permanen?
                     </p>
                 </div>
 
-                <div class="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 border-t border-slate-200/80">
+                <div class="flex items-center justify-end gap-3 px-6 sm:px-7 py-4 bg-slate-50/80 border-t border-slate-100">
                     <button type="button" @click="show = false; $wire.cancelDeleteStock()" class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                         Batal
                     </button>
@@ -438,6 +476,8 @@
                         </svg>
                         <span wire:loading.remove wire:target="deleteStock">Ya, Hapus Barang</span>
                         <span wire:loading wire:target="deleteStock">Menghapus...</span>
+                    </button>
+                </div>
                     </button>
                 </div>
             </div>

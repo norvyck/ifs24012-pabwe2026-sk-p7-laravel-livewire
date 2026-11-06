@@ -173,7 +173,7 @@
 
     <!-- Modal Crop Foto Profil -->
     @if ($showCropModal && $photo)
-        <div class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 bg-slate-900/60 backdrop-blur-md"
+        <div class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 sm:p-6 bg-slate-950/70 backdrop-blur-sm"
              wire:ignore.self
              x-data="{
                 cropper: null,
@@ -203,24 +203,34 @@
                 }
              }"
              x-init="$nextTick(() => { initCropper(); })">
-            <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl border border-slate-200/80 overflow-hidden flex flex-col">
-                <div class="flex items-center justify-between px-6 py-4.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white">
-                    <h3 class="text-base font-bold flex items-center space-x-2">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                        <span>Sesuaikan Potongan Foto (Rasio 1:1)</span>
-                    </h3>
-                    <button wire:click="closeCropModal" class="p-1.5 rounded-xl text-white/80 hover:text-white hover:bg-white/10 transition">
+            <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl shadow-slate-950/20 ring-1 ring-slate-900/10 overflow-hidden flex flex-col my-auto transition-all">
+                
+                <!-- Sleek Top Gradient Accent -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600"></div>
+
+                <!-- Unified Header -->
+                <div class="px-6 sm:px-7 pt-6 pb-2 flex items-start justify-between gap-4">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 text-white flex items-center justify-center shadow-lg shadow-blue-500/25 flex-shrink-0">
+                            <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Potong Foto Profil</h3>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Sesuaikan bingkai rasio presisi 1:1</p>
+                        </div>
+                    </div>
+                    <button wire:click="closeCropModal" aria-label="Tutup modal potong foto" class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
                     </button>
                 </div>
 
-                <div class="px-6 py-5">
-                    <div class="max-h-80 overflow-hidden flex items-center justify-center bg-slate-900 rounded-2xl">
+                <div class="p-6 sm:p-7">
+                    <div class="max-h-80 overflow-hidden flex items-center justify-center bg-slate-900 rounded-2xl shadow-inner">
                         <img id="imageToCrop" src="{{ $photo->temporaryUrl() }}" alt="Preview" class="max-w-full block">
                     </div>
                 </div>
 
-                <div class="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 border-t border-slate-200/80">
+                <div class="flex items-center justify-end gap-3 px-6 sm:px-7 py-4 bg-slate-50/80 border-t border-slate-100">
                     <button type="button" wire:click="closeCropModal" class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                         Batal
                     </button>
@@ -243,27 +253,42 @@
             x-data="{ show: true }"
             x-show="show"
             x-cloak
-            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 bg-slate-900/60 backdrop-blur-md">
-            <div class="bg-white rounded-3xl max-w-md w-full shadow-2xl border border-slate-200/80 overflow-hidden">
-                <div class="flex items-center space-x-3.5 px-6 py-4.5 bg-gradient-to-r from-rose-600 to-red-600 text-white">
-                    <div class="w-10 h-10 rounded-2xl bg-white/20 text-white flex items-center justify-center flex-shrink-0 backdrop-blur-sm">
+            @keydown.escape.window="show = false; $wire.cancelDeletePhoto()"
+            class="modal-scroll-lock fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overscroll-contain p-4 sm:p-6 bg-slate-950/70 backdrop-blur-sm">
+            <div @click.outside="show = false; $wire.cancelDeletePhoto()"
+                class="bg-white rounded-3xl max-w-md w-full shadow-2xl shadow-slate-950/20 ring-1 ring-slate-900/10 overflow-hidden my-auto transition-all">
+                
+                <!-- Sleek Top Gradient Accent -->
+                <div class="h-1.5 w-full bg-gradient-to-r from-rose-600 to-red-600"></div>
+
+                <!-- Unified Header -->
+                <div class="px-6 sm:px-7 pt-6 pb-2 flex items-start justify-between gap-4">
+                    <div class="flex items-center space-x-3.5">
+                        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-rose-600 to-red-600 text-white flex items-center justify-center shadow-lg shadow-rose-500/25 flex-shrink-0">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Hapus Foto Profil</h3>
+                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Foto profil akan kembali ke avatar inisial</p>
+                        </div>
+                    </div>
+                    <button type="button" @click="show = false; $wire.cancelDeletePhoto()" aria-label="Tutup modal konfirmasi" 
+                        class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-base font-bold text-white">Konfirmasi Hapus Foto Profil</h3>
-                        <p class="text-xs text-rose-100">Foto akan dihapus dan kembali ke avatar default</p>
-                    </div>
+                    </button>
                 </div>
 
-                <div class="px-6 py-5">
-                    <p class="text-sm font-medium text-slate-600">
-                        Apakah Anda yakin ingin menghapus foto profil ini?
+                <div class="p-6 sm:p-7">
+                    <p class="text-sm font-medium text-slate-600 leading-relaxed">
+                        Apakah Anda yakin ingin menghapus foto profil akun Anda?
                     </p>
                 </div>
 
-                <div class="flex items-center justify-end gap-3 px-6 py-4 bg-slate-50 border-t border-slate-200/80">
+                <div class="flex items-center justify-end gap-3 px-6 sm:px-7 py-4 bg-slate-50/80 border-t border-slate-100">
                     <button type="button" @click="show = false; $wire.cancelDeletePhoto()" class="px-4 py-2.5 text-xs font-bold text-slate-600 bg-white hover:bg-slate-100 border border-slate-200 rounded-xl transition">
                         Batal
                     </button>
@@ -274,6 +299,8 @@
                         </svg>
                         <span wire:loading.remove wire:target="deletePhoto">Ya, Hapus Foto</span>
                         <span wire:loading wire:target="deletePhoto">Menghapus...</span>
+                    </button>
+                </div>
                     </button>
                 </div>
             </div>
