@@ -59,7 +59,7 @@
                             </span>
                             <div class="flex flex-col">
                                 <span class="text-xl font-black tracking-tight text-slate-900 leading-none">Stock<span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">App</span></span>
-                                <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mt-1">Inventory System</span>
+                                <span class="text-[10px] font-bold text-slate-600 uppercase tracking-widest mt-1">Inventory System</span>
                             </div>
                         </a>
 
@@ -159,7 +159,7 @@
                         @endif
                         <div class="flex-1 min-w-0">
                             <p class="text-xs font-bold text-slate-900 truncate">{{ auth()->user()->name }}</p>
-                            <p class="text-[11px] text-slate-400 font-mono truncate">&#64;{{ auth()->user()->username }} &bull; {{ ucfirst(auth()->user()->role) }}</p>
+                            <p class="text-[11px] text-slate-600 font-mono font-semibold truncate">&#64;{{ auth()->user()->username }} &bull; {{ ucfirst(auth()->user()->role) }}</p>
                         </div>
                     </div>
 
@@ -229,7 +229,7 @@
             </main>
 
             <!-- Footer -->
-            <footer class="bg-white/80 backdrop-blur-sm border-t border-slate-200/80 py-6 text-center text-xs text-slate-500 mt-auto">
+            <footer class="bg-white/80 backdrop-blur-sm border-t border-slate-200/80 py-6 text-center text-xs text-slate-600 mt-auto">
                 &copy; Delcom Systems. Designed for Modern Inventory Management.
             </footer>
         </div>
@@ -246,7 +246,7 @@
                         </span>
                         <div class="flex flex-col">
                             <span class="text-xl font-black tracking-tight text-slate-900 leading-none">Stock<span class="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">App</span></span>
-                            <span class="text-[10px] font-semibold text-slate-400 uppercase tracking-widest mt-1">Inventory System</span>
+                            <span class="text-[10px] font-bold text-slate-600 uppercase tracking-widest mt-1">Inventory System</span>
                         </div>
                     </a>
                     <div class="flex items-center space-x-3">
@@ -264,7 +264,7 @@
                 {{ $slot }}
             </main>
 
-            <footer class="bg-white/80 backdrop-blur-sm border-t border-slate-200/80 py-6 text-center text-xs text-slate-500">
+            <footer class="bg-white/80 backdrop-blur-sm border-t border-slate-200/80 py-6 text-center text-xs text-slate-600">
                 &copy; Delcom Systems. All rights reserved.
             </footer>
         </div>

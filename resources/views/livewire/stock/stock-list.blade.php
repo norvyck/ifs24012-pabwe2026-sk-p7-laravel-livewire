@@ -7,13 +7,13 @@
     <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5 mb-8">
         <div>
             <div class="flex items-center space-x-2.5 mb-1.5">
-                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-700 border border-blue-200">
+                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-200">
                     Inventory System
                 </span>
-                <span class="text-xs text-slate-400 font-medium">Real-time Stock Control</span>
+                <span class="text-xs text-slate-600 font-semibold">Real-time Stock Control</span>
             </div>
             <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Daftar Stok Barang Saya</h1>
-            <p class="text-sm text-slate-500 mt-1">Kelola stok inventaris barang Anda secara rapi dan akurat</p>
+            <p class="text-sm text-slate-600 mt-1">Kelola stok inventaris barang Anda secara rapi dan akurat</p>
         </div>
 
         <!-- Desktop & Mobile Action Group -->
@@ -54,7 +54,7 @@
                     x-transition:leave-start="opacity-100 scale-100"
                     x-transition:leave-end="opacity-0 scale-95"
                     class="absolute right-0 z-30 mt-2 w-56 origin-top-right rounded-2xl border border-slate-200/90 bg-white/95 backdrop-blur-xl py-2 shadow-2xl shadow-slate-200/80">
-                    <div class="px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-400">Spreadsheet</div>
+                    <div class="px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-slate-600">Spreadsheet</div>
 
                     <button type="button" :disabled="!!loading"
                         @click="
@@ -106,7 +106,7 @@
         </div>
 
         <div class="flex items-center space-x-3 w-full sm:w-auto">
-            <label for="stock-status-filter" class="text-xs font-bold text-slate-500 uppercase tracking-wider">Status:</label>
+            <label for="stock-status-filter" class="text-xs font-bold text-slate-700 uppercase tracking-wider">Status:</label>
             <select id="stock-status-filter" wire:model.live="statusFilter" aria-label="Filter status stok barang"
                 class="px-3.5 py-2.5 text-sm font-semibold rounded-xl border border-slate-200/90 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 bg-white transition-all">
                 <option value="">Semua Status</option>
@@ -126,8 +126,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                     </svg>
                 </div>
-                <h3 class="text-lg font-bold text-slate-800">Belum ada stok barang ditemukan</h3>
-                <p class="text-sm text-slate-500 mt-1 max-w-sm mx-auto">Tambahkan barang baru secara manual atau gunakan fitur AI untuk rekomendasi cepat</p>
+                <h2 class="text-lg font-bold text-slate-800">Belum ada stok barang ditemukan</h2>
+                <p class="text-sm text-slate-600 mt-1 max-w-sm mx-auto">Tambahkan barang baru secara manual atau gunakan fitur AI untuk rekomendasi cepat</p>
                 <div class="mt-6 flex items-center justify-center gap-3">
                     <button type="button" wire:click="openCreateModal" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs rounded-xl shadow-sm transition">
                         Tambah Manual
@@ -178,7 +178,7 @@
                                 @if ($stock->coverImageUrl())
                                     <img src="{{ $stock->coverImageUrl() }}" alt="{{ $stock->name }}" class="w-full h-full object-cover">
                                 @else
-                                    <span class="text-xs font-bold text-slate-400">
+                                    <span class="text-xs font-bold text-slate-600">
                                         {{ strtoupper(substr($stock->name, 0, 2)) }}
                                     </span>
                                 @endif
@@ -207,7 +207,7 @@
                                         {{ \App\Features\Stock\Enums\StockStatus::tryFrom($stock->status)?->label() ?? ucfirst($stock->status) }}
                                     </span>
                                 </div>
-                                <div class="flex flex-wrap items-center gap-4 mt-1.5 text-xs text-slate-500">
+                                <div class="flex flex-wrap items-center gap-4 mt-1.5 text-xs text-slate-600">
                                     <span>Satuan: <strong class="text-slate-700">{{ $stock->unit }}</strong></span>
                                     @if($stock->price !== null)
                                         <span>Harga: <strong class="text-slate-800 font-semibold">Rp {{ number_format($stock->price, 0, ',', '.') }}</strong></span>
@@ -272,10 +272,10 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">
+                            <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">
                                 {{ $editingStockId ? 'Edit Stok Barang' : 'Tambah Stok Barang Baru' }}
-                            </h3>
-                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Lengkapi rincian data inventaris barang Anda</p>
+                            </h2>
+                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Lengkapi rincian data inventaris barang Anda</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.closeFormModal()" aria-label="Tutup form stok barang" 
@@ -443,8 +443,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Import Spreadsheet</h3>
-                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Unggah berkas Excel/CSV untuk tambah stok</p>
+                            <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Import Spreadsheet</h2>
+                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Unggah berkas Excel/CSV untuk tambah stok</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.closeImportModal()" aria-label="Tutup modal import excel" 
@@ -516,8 +516,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Generate Stok Barang AI</h3>
-                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Buat item inventaris terstruktur otomatis berbasis AI</p>
+                            <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Generate Stok Barang AI</h2>
+                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Buat item inventaris terstruktur otomatis berbasis AI</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.closeAiModal()" aria-label="Tutup modal generate AI" 
@@ -569,7 +569,7 @@
                                     class="w-7 h-7 rounded-lg text-slate-600 hover:bg-slate-100 font-bold flex items-center justify-center transition active:scale-95"
                                     aria-label="Tambah jumlah item">&plus;</button>
                             </div>
-                            <span class="text-[11px] text-slate-400 font-medium">(1-10 item)</span>
+                            <span class="text-[11px] text-slate-600 font-medium">(1-10 item)</span>
                         </div>
 
                         <button type="button" wire:click="generateWithAi" wire:loading.attr="disabled"
@@ -590,7 +590,7 @@
                     @if (!empty($aiGeneratedItems))
                         <div class="border-t border-slate-100 pt-5 space-y-4">
                             <div class="flex items-center justify-between">
-                                <h4 class="text-xs font-bold uppercase tracking-wider text-slate-700">Hasil Rekomendasi AI:</h4>
+                                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700">Hasil Rekomendasi AI:</h3>
                                 <span class="text-xs text-purple-700 font-bold bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200/80">
                                     {{ count($aiSelectedIndices) }} dari {{ count($aiGeneratedItems) }} dipilih
                                 </span>
@@ -672,8 +672,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Konfirmasi Hapus</h3>
-                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Tindakan ini permanen dan tidak dapat dibatalkan</p>
+                            <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Konfirmasi Hapus</h2>
+                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Tindakan ini permanen dan tidak dapat dibatalkan</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.cancelDelete()" aria-label="Tutup modal konfirmasi" 

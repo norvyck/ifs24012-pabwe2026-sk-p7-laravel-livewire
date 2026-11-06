@@ -5,13 +5,13 @@
     <!-- Header -->
     <div class="mb-8">
         <div class="flex items-center space-x-2.5 mb-1.5">
-            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-700 border border-blue-200">
+            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-100 text-blue-800 border border-blue-200">
                 Akun Saya
             </span>
-            <span class="text-xs text-slate-400 font-medium">Pengaturan & Keamanan</span>
+            <span class="text-xs text-slate-600 font-semibold">Pengaturan & Keamanan</span>
         </div>
         <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Pengaturan Profil</h1>
-        <p class="text-sm text-slate-500 mt-1">Kelola identitas diri, foto profil 1:1, dan keamanan akun Anda</p>
+        <p class="text-sm text-slate-600 mt-1">Kelola identitas diri, foto profil 1:1, dan keamanan akun Anda</p>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -60,7 +60,7 @@
                 @endif
             </div>
 
-            <p class="text-[11px] text-slate-400 mt-5 leading-relaxed">
+            <p class="text-[11px] text-slate-600 mt-5 leading-relaxed">
                 Mendukung PNG, JPG, GIF hingga 5MB. Foto otomatis dipotong menjadi rasio presisi 1:1.
             </p>
         </div>
@@ -75,7 +75,7 @@
                     </span>
                     <div>
                         <h2 class="text-base font-bold text-slate-900 leading-snug">Ubah Identitas Diri</h2>
-                        <p class="text-xs text-slate-400">Perbarui nama lengkap, username, dan alamat email Anda</p>
+                        <p class="text-xs text-slate-600">Perbarui nama lengkap, username, dan alamat email Anda</p>
                     </div>
                 </div>
 
@@ -125,7 +125,7 @@
                     </span>
                     <div>
                         <h2 class="text-base font-bold text-slate-900 leading-snug">Ubah Password Akun</h2>
-                        <p class="text-xs text-slate-400">Pastikan akun Anda menggunakan kombinasi password yang kuat dan aman</p>
+                        <p class="text-xs text-slate-600">Pastikan akun Anda menggunakan kombinasi password yang kuat dan aman</p>
                     </div>
                 </div>
 
@@ -215,8 +215,8 @@
                             <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Potong Foto Profil</h3>
-                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Sesuaikan bingkai rasio presisi 1:1</p>
+                            <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Potong Foto Profil</h2>
+                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Sesuaikan bingkai rasio presisi 1:1</p>
                         </div>
                     </div>
                     <button wire:click="closeCropModal" aria-label="Tutup modal potong foto" class="p-2 -mr-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-xl transition">
@@ -270,8 +270,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Hapus Foto Profil</h3>
-                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Foto profil akan kembali ke avatar inisial</p>
+                            <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Hapus Foto Profil</h2>
+                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Foto profil akan kembali ke avatar inisial</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.cancelDeletePhoto()" aria-label="Tutup modal konfirmasi" 
@@ -299,8 +299,6 @@
                         </svg>
                         <span wire:loading.remove wire:target="deletePhoto">Ya, Hapus Foto</span>
                         <span wire:loading wire:target="deletePhoto">Menghapus...</span>
-                    </button>
-                </div>
                     </button>
                 </div>
             </div>

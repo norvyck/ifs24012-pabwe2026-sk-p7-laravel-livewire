@@ -7,8 +7,8 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                 </svg>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Buat Akun Member</h2>
-            <p class="text-sm text-slate-500 mt-2">Daftar sekarang untuk mulai mengelola stok inventaris Anda</p>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Buat Akun Member</h1>
+            <p class="text-sm text-slate-600 mt-2">Daftar sekarang untuk mulai mengelola stok inventaris Anda</p>
         </div>
 
         <form wire:submit.prevent="register" class="space-y-4">
@@ -62,7 +62,7 @@
             </button>
         </form>
 
-        <div class="mt-8 pt-6 border-t border-slate-100 text-center text-xs text-slate-500">
+        <div class="mt-8 pt-6 border-t border-slate-100 text-center text-xs text-slate-600">
             Sudah memiliki akun?
             <a href="{{ route('login') }}" class="font-bold text-blue-600 hover:text-blue-700 hover:underline transition">Masuk di sini</a>
         </div>

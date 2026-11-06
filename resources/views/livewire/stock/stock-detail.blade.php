@@ -7,7 +7,7 @@
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5 mb-8">
         <div class="flex items-center space-x-3.5">
             <a href="{{ route('stocks.index') }}" 
-               class="p-2.5 rounded-2xl bg-white/90 border border-slate-200/90 text-slate-500 hover:text-blue-600 hover:bg-blue-50 shadow-sm transition-all duration-200 active:scale-95" 
+               class="p-2.5 rounded-2xl bg-white/90 border border-slate-200/90 text-slate-600 hover:text-blue-600 hover:bg-blue-50 shadow-sm transition-all duration-200 active:scale-95" 
                title="Kembali ke Daftar Stok"
                aria-label="Kembali ke Daftar Stok">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,8 +129,8 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
                 </div>
-                <h3 class="text-base font-bold text-slate-800">Tambahkan Cover Gambar untuk Stok Barang Ini</h3>
-                <p class="text-xs text-slate-400 mt-1 max-w-sm">Mendukung format gambar PNG, JPG, GIF hingga ukuran 5MB untuk katalog produk.</p>
+                <h2 class="text-base font-bold text-slate-800">Tambahkan Cover Gambar untuk Stok Barang Ini</h2>
+                <p class="text-xs text-slate-600 mt-1 max-w-sm">Mendukung format gambar PNG, JPG, GIF hingga ukuran 5MB untuk katalog produk.</p>
                 
                 <button type="button" onclick="document.getElementById('coverPhotoInput').click()" 
                     class="mt-5 px-5 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold rounded-xl shadow-md shadow-blue-500/20 transition flex items-center space-x-2 active:scale-95">
@@ -154,28 +154,28 @@
     <div class="space-y-6">
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div class="bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-card border border-slate-200/80">
-                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Status Ketersediaan</span>
+                <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">Status Ketersediaan</span>
                 <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold border {{ \App\Features\Stock\Enums\StockStatus::tryFrom($stock->status)?->badgeClass() ?? 'bg-slate-100 text-slate-700' }}">
                     {{ \App\Features\Stock\Enums\StockStatus::tryFrom($stock->status)?->label() ?? ucfirst($stock->status) }}
                 </span>
             </div>
 
             <div class="bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-card border border-slate-200/80">
-                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Jumlah Stok Saat Ini</span>
+                <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">Jumlah Stok Saat Ini</span>
                 <div class="text-xl font-black text-slate-900">
-                    {{ $stock->quantity }} <span class="text-sm font-semibold text-slate-500">{{ $stock->unit }}</span>
+                    {{ $stock->quantity }} <span class="text-sm font-semibold text-slate-600">{{ $stock->unit }}</span>
                 </div>
             </div>
 
             <div class="bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-card border border-slate-200/80">
-                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Ambang Batas Minimum</span>
+                <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">Ambang Batas Minimum</span>
                 <div class="text-xl font-bold text-slate-800">
-                    {{ $stock->min_stock }} <span class="text-sm font-semibold text-slate-500">{{ $stock->unit }}</span>
+                    {{ $stock->min_stock }} <span class="text-sm font-semibold text-slate-600">{{ $stock->unit }}</span>
                 </div>
             </div>
 
             <div class="bg-white/95 backdrop-blur-md p-5 rounded-2xl shadow-card border border-slate-200/80">
-                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">Harga Satuan</span>
+                <span class="text-[11px] font-bold text-slate-600 uppercase tracking-wider block mb-1.5">Harga Satuan</span>
                 <div class="text-xl font-black text-slate-900">
                     {{ $stock->price !== null ? 'Rp ' . number_format($stock->price, 0, ',', '.') : '-' }}
                 </div>
@@ -187,7 +187,7 @@
             <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
                 <div>
                     <h2 class="text-lg font-bold text-slate-900">Deskripsi / Spesifikasi Produk</h2>
-                    <p class="text-xs text-slate-400 mt-0.5">Format Markdown & Rich Text</p>
+                    <p class="text-xs text-slate-600 mt-0.5">Format Markdown & Rich Text</p>
                 </div>
             </div>
 
@@ -206,7 +206,7 @@
                     <div x-ref="viewerContainer"></div>
                 </div>
             @else
-                <div class="py-8 text-center text-slate-400 text-sm font-medium">
+                <div class="py-8 text-center text-slate-600 text-sm font-medium">
                     Belum ada deskripsi yang ditambahkan untuk stok barang ini.
                 </div>
             @endif
@@ -236,8 +236,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Edit Stok Barang</h3>
-                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Perbarui atribut dan data inventaris barang Anda</p>
+                            <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Edit Stok Barang</h2>
+                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Perbarui atribut dan data inventaris barang Anda</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.closeEditModal()" aria-label="Tutup form edit stok" 
@@ -389,8 +389,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Hapus Cover</h3>
-                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Berkas gambar cover akan dihapus permanen</p>
+                            <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Hapus Cover</h2>
+                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Berkas gambar cover akan dihapus permanen</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.cancelDeleteCover()" aria-label="Tutup modal konfirmasi" 
@@ -447,8 +447,8 @@
                             </svg>
                         </div>
                         <div>
-                            <h3 class="text-xl font-extrabold text-slate-900 tracking-tight">Konfirmasi Hapus</h3>
-                            <p class="text-xs text-slate-500 mt-0.5 font-medium">Barang ini dan cover gambarnya akan dihapus</p>
+                            <h2 class="text-xl font-extrabold text-slate-900 tracking-tight">Konfirmasi Hapus</h2>
+                            <p class="text-xs text-slate-600 mt-0.5 font-medium">Barang ini dan cover gambarnya akan dihapus</p>
                         </div>
                     </div>
                     <button type="button" @click="show = false; $wire.cancelDeleteStock()" aria-label="Tutup modal konfirmasi" 
