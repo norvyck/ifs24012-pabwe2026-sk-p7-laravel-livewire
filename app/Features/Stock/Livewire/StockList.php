@@ -33,10 +33,10 @@ class StockList extends Component
     public string $formName = '';
     public ?string $formSku = null;
     public ?string $formDescription = null;
-    public int $formQuantity = 0;
+    public int|string|null $formQuantity = 0;
     public string $formUnit = 'pcs';
-    public ?float $formPrice = null;
-    public int $formMinStock = 5;
+    public int|float|string|null $formPrice = null;
+    public int|string|null $formMinStock = 5;
     public string $formStatus = 'available';
 
     // Delete Confirmation Modal State
@@ -119,12 +119,16 @@ class StockList extends Component
 
     public function updatedFormQuantity(): void
     {
-        $this->formStatus = StockStatus::fromQuantity((int) $this->formQuantity, (int) $this->formMinStock)->value;
+        $qty = is_numeric($this->formQuantity) ? (int) $this->formQuantity : 0;
+        $min = is_numeric($this->formMinStock) ? (int) $this->formMinStock : 0;
+        $this->formStatus = StockStatus::fromQuantity($qty, $min)->value;
     }
 
     public function updatedFormMinStock(): void
     {
-        $this->formStatus = StockStatus::fromQuantity((int) $this->formQuantity, (int) $this->formMinStock)->value;
+        $qty = is_numeric($this->formQuantity) ? (int) $this->formQuantity : 0;
+        $min = is_numeric($this->formMinStock) ? (int) $this->formMinStock : 0;
+        $this->formStatus = StockStatus::fromQuantity($qty, $min)->value;
     }
 
     public function saveStock(StockService $stockService): void
@@ -140,16 +144,18 @@ class StockList extends Component
             'formStatus' => ['required', 'in:available,low_stock,out_of_stock'],
         ]);
 
-        $status = StockStatus::fromQuantity((int) $this->formQuantity, (int) $this->formMinStock)->value;
+        $qty = (int) $this->formQuantity;
+        $min = (int) $this->formMinStock;
+        $status = StockStatus::fromQuantity($qty, $min)->value;
 
         $data = [
             'name' => $this->formName,
             'sku' => $this->formSku ?: null,
             'description' => $this->formDescription,
-            'quantity' => (int) $this->formQuantity,
+            'quantity' => $qty,
             'unit' => $this->formUnit,
-            'price' => $this->formPrice !== null ? (float) $this->formPrice : null,
-            'min_stock' => (int) $this->formMinStock,
+            'price' => ($this->formPrice !== null && $this->formPrice !== '') ? (float) $this->formPrice : null,
+            'min_stock' => $min,
             'status' => $status,
         ];
 

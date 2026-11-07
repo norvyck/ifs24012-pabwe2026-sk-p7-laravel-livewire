@@ -17,10 +17,10 @@ class StockDetail extends Component
     public string $name = '';
     public ?string $sku = '';
     public ?string $description = '';
-    public int $quantity = 0;
+    public int|string|null $quantity = 0;
     public string $unit = 'pcs';
-    public ?float $price = null;
-    public int $minStock = 5;
+    public int|float|string|null $price = null;
+    public int|string|null $minStock = 5;
     public string $status = 'available';
 
     public mixed $coverPhoto = null;
@@ -63,12 +63,16 @@ class StockDetail extends Component
 
     public function updatedQuantity(): void
     {
-        $this->status = StockStatus::fromQuantity((int) $this->quantity, (int) $this->minStock)->value;
+        $qty = is_numeric($this->quantity) ? (int) $this->quantity : 0;
+        $min = is_numeric($this->minStock) ? (int) $this->minStock : 0;
+        $this->status = StockStatus::fromQuantity($qty, $min)->value;
     }
 
     public function updatedMinStock(): void
     {
-        $this->status = StockStatus::fromQuantity((int) $this->quantity, (int) $this->minStock)->value;
+        $qty = is_numeric($this->quantity) ? (int) $this->quantity : 0;
+        $min = is_numeric($this->minStock) ? (int) $this->minStock : 0;
+        $this->status = StockStatus::fromQuantity($qty, $min)->value;
     }
 
     public function adjustQuantity(int $delta, StockService $stockService): void
